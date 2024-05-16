@@ -1,0 +1,90 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# AMRNetherland
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The goal of AMRNetherland is to provide a suite of tools for analyzing and visualizing antimicrobial resistance (AMR) data specific to the Netherlands. 
+This package includes functions to calculate the prevalence of resistance genes in percentage, filter and summarize data by city and province, and more. 
+It is designed to help researchers and public health officials easily access and analyze AMR data to monitor trends, get the patient data and inform decision-making. 
+
+## Installation
+
+You can install the development version of AMRNetherland from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("MarianaMousa1/AMRNetherland")
+```
+
+## Example
+
+This is a basic example which shows you how to solve a common problem:
+Function: Load_metadata
+```{r example1}
+library(AMRNetherland)
+## basic example code
+metadata <- Load_metadata("./Data/metadata.txt")
+head(metadata)
+
+```
+Function: calculate_resgene_prevalence
+```{r example2}
+library(AMRNetherland)
+## basic example code
+  gene <- "blaZ_79"  # Vervang dit door het specifieke resistentiegen waarvan je de prevalentie wilt berekenen
+  data <- read.csv2("./Data/metadata.txt")  # Vervang "jouw_data.csv" door de naam van je dataset
+
+calculate_resgene_prevalence(gene, data)
+
+```
+Function: get_antibiotic_class
+```{r example3}
+library(AMRNetherland)
+## basic example code
+   zipcode <- "8071"  # Vervang dit door de werkelijke postcode
+  year_of_birth <- 1959  # Vervang dit door het werkelijke geboortejaar
+  data <- read.csv2("./Data/metadata.txt")  # Vervang "jouw_data.csv" door de naam van je dataset
+
+  antibiotic_class <- get_antibiotic_class(zipcode, year_of_birth, data)
+  print(antibiotic_class)
+
+```
+
+Function: get_date_info
+```{r example4}
+library(AMRNetherland)
+## basic example code
+ date <- 16-06-2023
+   data <- read.csv2("./Data/metadata.txt")
+get_date_info <- get_date_info(data, date)
+head(get_date_info)
+
+```
+Function: plot_ab_reis
+```{r example5}
+library(AMRNetherland)
+## basic example code
+   data <- read.csv2("./Data/metadata.txt")
+ plot_ab_resis(data)
+```
+
+
+You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. `devtools::build_readme()` is handy for this.
+
+
+In that case, don't forget to commit and push the resulting figure files, so they display on GitHub and CRAN.
