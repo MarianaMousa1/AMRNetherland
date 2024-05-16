@@ -128,5 +128,5 @@ library(AMRNetherland)
 ```
 
 conclusion
-This package is designed to help researchers and public health officials easily access and analyze and visualize AMR data to monitor trends in Netherland, get and compare the patient information.
+This package is designed to help researchers and public health officials easily access and analyze and visualize AMR data to monitor trends in the Netherland, get and compare the patient's information.
 ----
