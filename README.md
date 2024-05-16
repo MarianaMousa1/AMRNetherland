@@ -8,11 +8,15 @@
 
 The goal of AMRNetherland is to provide a suite of tools for analyzing
 and visualizing antimicrobial resistance (AMR) data specific to the
-Netherlands. This package includes functions to calculate the prevalence
-of resistance genes in percentage, filter and summarize data by city and
-province, and more. It is designed to help researchers and public health
-officials easily access and analyze AMR data to monitor trends, get the
-patient data and inform decision-making.
+Netherlands.
+
+This package includes functions to calculate the prevalence of
+resistance genes in percentage, filter and summarize data by city and
+province, and more.
+
+It is designed to help researchers and public health officials easily
+access and analyze AMR data to monitor trends, get the patient data and
+inform decision-making.
 
 ## Installation
 
@@ -22,17 +26,37 @@ You can install the development version of AMRNetherland from
 ``` r
 # install.packages("devtools")
 devtools::install_github("MarianaMousa1/AMRNetherland")
+#> Using GitHub PAT from the git credential store.
+#> Downloading GitHub repo MarianaMousa1/AMRNetherland@HEAD
+#> 
+#> ── R CMD build ─────────────────────────────────────────────────────────────────
+#>          checking for file 'C:\Users\Maria\AppData\Local\Temp\RtmpshruWi\remotes476818fb2e00\MarianaMousa1-AMRNetherland-86251c3/DESCRIPTION' ...  ✔  checking for file 'C:\Users\Maria\AppData\Local\Temp\RtmpshruWi\remotes476818fb2e00\MarianaMousa1-AMRNetherland-86251c3/DESCRIPTION' (383ms)
+#>       ─  preparing 'AMRNetherland':
+#>    checking DESCRIPTION meta-information ...     checking DESCRIPTION meta-information ...   ✔  checking DESCRIPTION meta-information
+#>       ─  checking for LF line-endings in source and make files and shell scripts (347ms)
+#>   ─  checking for empty or unneeded directories
+#> ─  looking to see if a 'data/datalist' file should be added
+#>   ─  building 'AMRNetherland_1.0.0.tar.gz'
+#>      
+#> 
+#> Installing package into 'C:/Users/Maria/AppData/Local/R/win-library/4.4'
+#> (as 'lib' is unspecified)
 ```
 
 ## Example
 
 This is a basic example which shows you how to solve a common problem:
+
 Function: Load_metadata
 
 ``` r
+ 
 library(AMRNetherland)
+ 
 ## basic example code
+ 
 metadata <- Load_metadata("./Data/metadata.txt")
+ 
 head(metadata)
 #>           Plasmid        Parent               Species            tsne1D
 #> 1 pRIVM_M100707_1 cRIVM_M100707 Klebsiella pneumoniae                 -
@@ -98,8 +122,9 @@ Function: calculate_resgene_prevalence
 library(AMRNetherland)
 ## basic example code
   gene <- "blaZ_79"  # Vervang dit door het specifieke resistentiegen waarvan je de prevalentie wilt berekenen
+ 
   data <- read.csv2("./Data/metadata.txt")  # Vervang "jouw_data.csv" door de naam van je dataset
-
+ 
 calculate_resgene_prevalence(gene, data)
 #> [1] "De prevalentie van dit resistentiegen is 4.7607619619019 %"
 ```
@@ -108,12 +133,15 @@ Function: get_antibiotic_class
 
 ``` r
 library(AMRNetherland)
+ 
 ## basic example code
    zipcode <- "8071"  # Vervang dit door de werkelijke postcode
+ 
   year_of_birth <- 1959  # Vervang dit door het werkelijke geboortejaar
+ 
   data <- read.csv2("./Data/metadata.txt")  # Vervang "jouw_data.csv" door de naam van je dataset
-
   antibiotic_class <- get_antibiotic_class(zipcode, year_of_birth, data)
+ 
   print(antibiotic_class)
 #> [1] "Antibiotic Class: Macrolide, NA"
 ```
@@ -123,7 +151,9 @@ Function: get_date_info
 ``` r
 library(AMRNetherland)
 ## basic example code
+ 
  date <- 16-06-2023
+ 
    data <- read.csv2("./Data/metadata.txt")
 get_date_info <- get_date_info(data, date)
 head(get_date_info)
@@ -154,9 +184,6 @@ library(AMRNetherland)
 ```
 
 <img src="man/figures/README-example5-1.png" width="100%" />
-
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date. `devtools::build_readme()` is handy for this.
 
 In that case, don’t forget to commit and push the resulting figure
 files, so they display on GitHub and CRAN.
