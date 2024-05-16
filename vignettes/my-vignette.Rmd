@@ -1,0 +1,132 @@
+---
+title: "my-vignette"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{my-vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+
+knitr::opts_chunk$set(echo = TRUE)
+source("../R/calculate_resgene_prevalence.R")
+source("../R/get_antibiotic_class.R")
+source("../R/get_date_info.R")
+source("../R/Load_metadata.R")
+source("../R/plot_ab_resis.R")
+
+devtools::load_all()
+```
+
+
+
+# Introduction
+
+The goal of AMRNetherland is to provide a suite of tools for analyzing and visualizing antimicrobial resistance (AMR) data specific to the Netherlands. 
+This package includes functions to calculate the prevalence of resistance genes in percentage, filter and summarize data by city and province, and more. 
+
+
+# Preparation 
+
+You can skip to [Cleaning the data](#cleaning-the-data) if you already have your own data ready.
+
+
+## Needed R packages
+
+As with many uses in R, we need some additional packages for AMR data analysis. Our package works closely together with the [`dplyr`](https://dplyr.tidyverse.org/) and [`ggplot2`](https://ggplot2.tidyverse.org) by RStudio.
+
+
+```{r lib packages, message = FALSE, warning = FALSE, results = 'asis'}
+library(dplyr)
+library(ggplot2)
+library(AMRNetherland)
+
+# (if not yet installed, install with:)
+# install.packages(c("dplyr", "ggplot2", "AMRNetherland"))
+```
+
+## Examples
+
+This is a basic examples
+
+
+Function Load_metadata: This function reads a CSV file from the specified path and returns the metadata.
+
+### Load_metadata example
+
+```{r example1}
+library(AMRNetherland)
+## basic example code
+metadata <- Load_metadata("../Data/metadata.txt")
+head(metadata)
+
+```
+
+
+## Function calculate_resgene_prevalence: This function calculates the prevalence of a specified resistance in the dataset
+
+### calculate_resgene_prevalence example
+
+```{r example2}
+library(AMRNetherland)
+## basic example code
+  gene <- "blaZ_79"  # Vervang dit door het specifieke resistentiegen waarvan je de prevalentie wilt berekenen
+  data <- read.csv2("../Data/metadata.txt")  # Vervang "jouw_data.csv" door de naam van je dataset
+
+calculate_resgene_prevalence(gene, data)
+
+```
+
+
+## Function get_antibiotic_class: Function to retrieve the antibiotic class based on zip code and year of birth
+
+### antibiotic_class example
+
+```{r example3}
+library(AMRNetherland)
+## basic example code
+   zipcode <- "8071"  # Vervang dit door de werkelijke postcode
+  year_of_birth <- 1959  # Vervang dit door het werkelijke geboortejaar
+  data <- read.csv2("../Data/metadata.txt")  # Vervang "jouw_data.csv" door de naam van je dataset
+
+  antibiotic_class <- get_antibiotic_class(zipcode, year_of_birth, data)
+  print(antibiotic_class)
+
+```
+
+
+## Function get_date_info: This function filters the dataset for a specific sampling date and returns the unique combination of city, state, and gender.
+
+### get_date_info example
+```{r example4}
+library(AMRNetherland)
+## basic example code
+ date <- 16-06-2023
+   data <- read.csv2("../Data/metadata.txt")
+ get_date_info <- get_date_info(data, date)
+head(get_date_info)
+
+```
+
+
+## Function plot_ab_reis: This function groups the data per province and counts the number of antibiotic resistance classes per province. It then creates a bar plot of the number of classes per province.
+
+### plot_ab_resis example
+```{r example5}
+library(AMRNetherland)
+## basic example code
+   data <- read.csv2("../Data/metadata.txt")
+ plot_ab_resis(data)
+```
+
+conclusion
+This package is designed to help researchers and public health officials easily access and analyze and visualize AMR data to monitor trends in Netherland, get and compare the patient information.
+----
