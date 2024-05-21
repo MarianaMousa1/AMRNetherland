@@ -27,20 +27,8 @@ You can install the development version of AMRNetherland from
 # install.packages("devtools")
 devtools::install_github("MarianaMousa1/AMRNetherland")
 #> Using GitHub PAT from the git credential store.
-#> Downloading GitHub repo MarianaMousa1/AMRNetherland@HEAD
-#> 
-#> ── R CMD build ─────────────────────────────────────────────────────────────────
-#>          checking for file 'C:\Users\Maria\AppData\Local\Temp\RtmpshruWi\remotes476818fb2e00\MarianaMousa1-AMRNetherland-86251c3/DESCRIPTION' ...  ✔  checking for file 'C:\Users\Maria\AppData\Local\Temp\RtmpshruWi\remotes476818fb2e00\MarianaMousa1-AMRNetherland-86251c3/DESCRIPTION' (383ms)
-#>       ─  preparing 'AMRNetherland':
-#>    checking DESCRIPTION meta-information ...     checking DESCRIPTION meta-information ...   ✔  checking DESCRIPTION meta-information
-#>       ─  checking for LF line-endings in source and make files and shell scripts (347ms)
-#>   ─  checking for empty or unneeded directories
-#> ─  looking to see if a 'data/datalist' file should be added
-#>   ─  building 'AMRNetherland_1.0.0.tar.gz'
-#>      
-#> 
-#> Installing package into 'C:/Users/Maria/AppData/Local/R/win-library/4.4'
-#> (as 'lib' is unspecified)
+#> Skipping install of 'AMRNetherland' from a github remote, the SHA1 (86251c3b) has not changed since last install.
+#>   Use `force = TRUE` to force installation
 ```
 
 ## Example
